@@ -1,5 +1,6 @@
 const { getDB } = require('../config/db');
 const { ObjectId } = require('mongodb');
+const {COLLECTION_SETTINGS}=require('../collectionConstant')
 
 // Insert a document into any collection
 const insertOne = async (collectionName, document) => {
@@ -64,7 +65,7 @@ const getNextSequence = async (sequenceName) => {
     try {
         // Increment the sequence value or initialize it if not present
         const result = await updateOne(
-            'settings', // Collection name
+            COLLECTION_SETTINGS, // Collection name
             { _id: sequenceName }, // Query to find the sequence document
             { $inc: { sequence: 1 } } // Increment the sequence by 1
         );
@@ -73,7 +74,7 @@ const getNextSequence = async (sequenceName) => {
         if (result.matchedCount === 0) {
             // If no document matched, create a new one with sequence initialized to 1
             await updateOne(
-                'settings',
+                COLLECTION_SETTINGS,
                 { _id: sequenceName },
                 { $set: { sequence: 1 } }
             );
@@ -81,7 +82,7 @@ const getNextSequence = async (sequenceName) => {
         }
 
         // Fetch the updated sequence value
-        const updatedDoc = await findOne('settings', { _id: sequenceName });
+        const updatedDoc = await findOne(COLLECTION_SETTINGS, { _id: sequenceName });
         if (!updatedDoc || typeof updatedDoc.sequence !== 'number') {
             throw new Error('Sequence value is not properly initialized.');
         }
