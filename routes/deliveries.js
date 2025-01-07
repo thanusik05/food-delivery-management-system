@@ -41,7 +41,7 @@ router.post('/', verifyAuth, isAdmin, async (req, res) => {
             ...deliveryData,
             orderId,
             deliveryPersonId,
-            createdAt: new Date(),
+            AssignedAt: new Date(),
             status: ORDER_STATUSES.DELIVERYAGENT_ASSIGNED,
             AssignedBy: new ObjectId(req.user.id),
         };

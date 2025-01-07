@@ -71,7 +71,7 @@ router.post('/', verifyAuth, appuser, async (req, res) => {
         };
 
         // Insert order into database
-        const result = await insertOne('orders', orderToInsert);
+        const result = await insertOne(COLLECTION_ORDER, orderToInsert);
 
         // Return order details
         res.status(200).json({

@@ -7,7 +7,7 @@ const deliverySchema = Joi.object({
     deliveryPersonId: JoiObjectId().required(), // ObjectId validation for deliveryPersonId (Joi automatically handles this)
     status: Joi.string().valid(ORDER_STATUSES.DELIVERED, ORDER_STATUSES.NOT_DELIVERED, ORDER_STATUSES.CANCELED, ORDER_STATUSES.DELIVERYAGENT_ASSIGNED)
         .default(ORDER_STATUSES.DELIVERED),
-    createdAt: Joi.date().iso(),
+    AssignedAt: Joi.date().iso(),
     updatedAt: Joi.date().iso(),
     AssignedBy:JoiObjectId()
 });

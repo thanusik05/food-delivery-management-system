@@ -3,6 +3,7 @@ module.exports.COLLECTION_USER="users";
 module.exports.COLLECTION_ORDER="orders";
 module.exports.COLLECTION_DELIVERY="deliveries";
 module.exports.COLLECTION_MENUITEM="menuItems";
+module.exports.COLLECTION_SETTINGS="settings";
 module.exports.ORDER_STATUSES = {
     NOT_DELIVERED: 'Not Delivered',
     DELIVERED: 'Delivered',
